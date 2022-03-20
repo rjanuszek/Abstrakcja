@@ -1,6 +1,6 @@
 package model.computer;
 
-public class Computer {
+abstract public class Computer {
 
     //    1. Pola obiektu
     protected String name;
@@ -8,6 +8,7 @@ public class Computer {
     protected int hdd;
     protected int ram;
     protected boolean state;
+    protected int volumeLevel;
 
     //    2. Konstruktor
     public Computer(String name, String type, int hdd, int ram) {
@@ -16,6 +17,8 @@ public class Computer {
         this.hdd = hdd;
         this.ram = ram;
         this.state = false;
+        this.volumeLevel = 0;
+
     }
 
     //    3. Gettery i Settery
@@ -64,4 +67,29 @@ public class Computer {
     public boolean getSate() {
         return state;
     }
+
+    public boolean isState() {
+        return state;
+    }
+
+    public void setState(boolean state) {
+        this.state = state;
+    }
+
+    public int getVolumeLevel() {
+        return volumeLevel;
+    }
+
+    public void setVolumeLevel(int volumeLevel) {
+        this.volumeLevel = volumeLevel;
+    }
+
+    public abstract int volumeUp();
+
+    public abstract int volumeUp(int newVolumeLevel);
+
+    public abstract int volumeDown();
+
+    public abstract int volumeDown(int newVolumeLevel);
+
 }

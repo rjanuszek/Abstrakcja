@@ -9,6 +9,38 @@ public class Laptop extends Computer {
         this.batteryLevel = batteryLevel;
     }
 
+    public int volumeUp() {
+        return volumeLevel += 5;
+    }
+
+    @Override
+    public int volumeUp(int newVolumeLevel) {
+        volumeLevel = volumeLevel + newVolumeLevel;
+        if (volumeLevel >= 100) {
+            volumeLevel = 100;
+        }
+        return volumeLevel;
+    }
+
+    @Override
+    public int volumeDown() {
+        volumeLevel -= 2;
+        if (volumeLevel <= 0) {
+            return 0;
+        } else {
+            return volumeLevel;
+        }
+    }
+
+    @Override
+    public int volumeDown(int newVolumeLevel) {
+        volumeLevel = volumeLevel - newVolumeLevel;
+        if (volumeLevel <= 0) {
+            volumeLevel = 0;
+        }
+        return volumeLevel;
+    }
+
     @Override
     public void switchOn() {
         System.out.println("Checking battery level");
@@ -21,5 +53,11 @@ public class Laptop extends Computer {
 
     public void setBatteryLevel(int newBatteryLevel) {
         batteryLevel = newBatteryLevel;
+    }
+
+    @Override
+    public void switchOff() {
+        System.out.println("Wyłączam laptop: " + name);
+        state = false;
     }
 }
